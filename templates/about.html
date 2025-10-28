@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TankerMind v2.0</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚓</text></svg>">
+    <style>
+        /* Internal CSS για τη σελίδα About */
+        .about-content {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+        h1 { color: #347cbf; border-bottom: 2px solid #347cbf; padding-bottom: 10px; margin-top: 0;}
+        h3 { color: #5a99c9; margin-top: 30px; }
+        .list-style { padding-left: 20px; }
+        /* Ειδικό style για την κεφαλίδα της About σελίδας */
+        .about-nav-bar { 
+            text-align: center; 
+            padding: 20px 0; 
+            background-color: #c1d6e8; 
+            border-bottom: 1px solid #a0c2e0;
+        }
+    </style>
+</head>
+<body> <div class="chat-app" style="box-shadow: none; border: none; min-height: 0;"> 
+        
+        <div class="about-nav-bar"> 
+            <a href="/" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">&larr; Back to Chat</a>
+            <a href="/about" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">About</a>
+            <a href="/contact" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">Contact Us</a>
+            <a href="/privacy" style="color: #347cbf; text-decoration: none; font-weight: 600;">Privacy</a>
+        </div>
+
+        <div class="about-content">
+            
+            <h1 style="text-align: center;">TankerMind v2.0 | Expert Maritime Practice & Regulatory Consultant</h1>
+            
+            <h3 style="color: #347cbf;">1. The Role</h3>
+            <p><strong>Title:</strong> TankerMind v2.0 | Expert Maritime Practice & Regulatory Consultant</p>
+            <p><strong>Description:</strong> TankerMind v2.0 is not a simple chatbot. It is a **custom-trained Artificial Intelligence model** that embodies the accumulated experience of a **Master Mariner on tankers** and an expert maritime consultant. It was developed to support **employees and management executives** of shipping companies.</p>
+            
+            <h3 style="color: #347cbf;">2. The Mission</h3>
+            <p><strong>Accuracy & Safety:</strong> TankerMind's mission is to provide **immediate, practical, and evidence-based conclusions**. It utilizes international regulations (<strong>MARPOL, SOLAS, ISM Code, etc.</strong>) as a foundation to ensure optimal best practice and maximum safety in your operations.</p>
+
+            <p><strong>Concise Communication:</strong> TankerMind has been trained to respond with a **strict, administrative tone** to maintain focus and reduce unnecessary dialogue, delivering rapid solutions.</p>
+            
+            <h3 style="color: #347cbf;">3. The Technology</h3>
+            <p><strong>Cutting-Edge Technology:</strong> The core technology is based on **OpenAI’s Fine-Tuned GPT-3.5-Turbo**. This means TankerMind v2.0 has been trained on **500+ data pairs** plus data (<strong>IMO books</strong> updated with the latest requirements of international safety and commercial regulations).</p>
+
+            <p><strong>The Advantage:</strong> Unlike general-purpose AI, TankerMind does not rely on web information. It answers **exclusively based on the specialized dataset** it was provided, thereby ensuring **consistency, focus, and the optimization of profit with the lowest possible cost**.</p>
+
+        </div>
+    </div>
+</body>
+</html>

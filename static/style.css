@@ -1,0 +1,197 @@
+/* static/style.css - ΤΕΛΙΚΗ ΕΚΔΟΣΗ DESIGN */
+
+/* Εισαγωγή Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --page-bg: #c1d6e8; /* Απαλό γαλάζιο background σελίδας */
+    --primary-blue: #347cbf; /* Σκούρο μπλε (για κεφαλίδα/κουμπιά) */
+    --ai-bubble-bg: #5a99c9; /* Μεσαίο μπλε για μηνύματα AI (πιο φωτεινό) */
+    --user-bubble-bg: #ffe6bc; /* Απαλό πορτοκαλί/μπεζ για μηνύματα χρήστη */
+    --text-color-light: #ffffff; /* Άσπρο για κείμενο σε μπλε φόντο */
+    --text-color-dark: #333333; /* Σκούρο για κείμενο */
+    --chat-bg-inner: #ffffff; /* Καθαρό λευκό για το εσωτερικό background του chat area */
+    --border-color: #a0c2e0; 
+    --shadow-heavy: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    background-color: var(--page-bg); 
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    /* ΝΕΟ: Ναυτικό Background (Άγκυρα ως υδατογράφημα) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500" fill="#d0e0f0" opacity="0.8">⚓</text></svg>');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.chat-app {
+    width: 100%;
+    max-width: 750px; 
+    
+    /* Χρησιμοποιούμε το χρώμα της σελίδας για ενιαίο φόντο */
+    background: var(--page-bg); 
+    
+    border-radius: 10px;
+    box-shadow: 0 15px 30px var(--shadow-heavy);
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh; /* **ΔΙΟΡΘΩΣΗ: Προσαρμογή στο 95% του ύψους της οθόνης** */
+    overflow: hidden;
+    border: none;
+}
+
+/* Header (Nav Bar) */
+.header {
+    background-color: var(--primary-blue);
+    color: var(--text-color-light);
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header .logo {
+    font-size: 2em;
+    padding-right: 15px;
+    color: var(--text-color-light);
+}
+
+.header .nav-links a {
+    color: var(--text-color-light); 
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 1.05em;
+    transition: color 0.3s;
+}
+
+/* Chat Container */
+.chat-container {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    
+    /* Ρύθμιση σε λευκό για αντίθεση των μηνυμάτων */
+    background-color: var(--chat-bg-inner); 
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* Message Structure */
+.message-bubble {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.5;
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+/* AI Message (Αριστερά) */
+.ai-message-wrapper {
+    display: flex;
+    margin-right: auto;
+    align-items: flex-start;
+}
+.ai-message-wrapper .message-icon {
+    margin-right: 15px;
+    background-color: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.ai-message-wrapper .message-bubble {
+    background-color: var(--ai-bubble-bg);
+    color: var(--text-color-light);
+    border-top-left-radius: 5px;
+}
+
+/* User Message (Δεξιά) */
+.user-message-wrapper {
+    display: flex;
+    margin-left: auto;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+}
+.user-message-wrapper .message-icon {
+    margin-left: 15px;
+    background-color: transparent;
+    border: 2px solid var(--user-bubble-bg);
+    color: var(--text-color-dark);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-message-wrapper .message-bubble {
+    background-color: var(--user-bubble-bg);
+    color: var(--text-color-dark);
+    border-top-right-radius: 5px;
+}
+
+/* Input Area */
+.input-area {
+    padding: 20px 25px;
+    background-color: white;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-area input {
+    flex-grow: 1;
+    padding: 15px 18px; /* ΑΥΞΗΜΕΝΟ ΥΨΟΣ */
+    height: 55px; /* ΥΨΟΣ: 55px */
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-area input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(52, 124, 191, 0.2);
+}
+
+.input-area button {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    width: 60px; /* ΑΛΛΑΓΗ: Διπλό πλάτος */
+    height: 60px; /* ΑΛΛΑΓΗ: Διπλό ύψος */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em; /* ΑΛΛΑΓΗ: Μεγαλύτερο εικονίδιο βέλους */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.input-area button:hover {
+    background-color: #2a6aa8;
+    transform: scale(1.05);
+}

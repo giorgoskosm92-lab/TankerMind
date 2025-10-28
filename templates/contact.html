@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact TankerMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚓</text></svg>">
+    <style>
+        /* Styles specific to the contact form area */
+        .contact-box {
+            padding: 40px;
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .contact-box h1 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .contact-details {
+            margin-top: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .contact-details div {
+            width: 48%;
+            padding: 0 10px;
+        }
+        .contact-details p {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .contact-details a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #f8f8f8; 
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #c1c1c1;
+        }
+        .captain-info {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f0f4f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body style="background-color: #f0f4f9;">
+    <div class="chat-app" style="min-height: auto; box-shadow: none; border: none;">
+        <div style="text-align: center; padding: 20px 0; background-color: #c1d6e8; border-bottom: 1px solid #a0c2e0;">
+            <a href="/" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">&larr; Back to Chat</a>
+            <a href="/about" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">About</a>
+            <a href="/contact" style="color: #347cbf; text-decoration: none; font-weight: 600;">Contact Us</a>
+        </div>
+
+        <div class="contact-box">
+            <h1>Contact TankerMind</h1>
+            
+            <p style="text-align: center;">For business inquiries, customized demos, or technical support regarding TankerMind v2.0.</p>
+
+            <div class="contact-details">
+                
+                <div style="border-right: 1px solid #eee;">
+                    <h3 style="color: #ff9900; margin-top: 0;">1. SALES & DEMO REQUESTS</h3>
+                    <p><strong>Primary Contact (Capt. G. Kosmidis):</strong></p>
+                    <p style="font-size: 1.2em;">
+                        <a href="mailto:giorgoskosm92@gmail.com">giorgoskosm92@gmail.com</a>
+                    </p>
+                    <p><strong>Phone (For Direct Inquiries):</strong></p>
+                    <p style="font-size: 1.2em;">
+                        <a href="tel:+306981285695">+30 6981285695</a>
+                    </p>
+                    
+                    <a href="mailto:giorgoskosm92@gmail.com" class="cta-button">Request a Custom Demo</a>
+                </div>
+                
+                <div style="border-left: 1px solid #eee; padding-left: 20px;">
+                    <h3 style="color: #347cbf; margin-top: 0;">2. TECHNICAL SUPPORT & BILLING</h3>
+                    <p>For issues with the AI model or subscription payments.</p>
+                    <p style="font-size: 1.2em;">
+                        <a href="mailto:support@tankermind.com">support@tankermind.com</a>
+                    </p>
+                    <p style="margin-top: 15px;"><strong>Support Hours:</strong></p>
+                    <p style="font-size: 1em; font-style: italic; color: #666;">
+                        Monday - Friday, 09:00 - 17:00 (EET)
+                    </p>
+                </div>
+            </div>
+            
+            <div class="captain-info">
+                <p style="font-weight: 600; margin: 0;">Project Lead & Expertise Verification:</p>
+                <p style="margin: 5px 0 0;">
+    <strong>Capt. Giorgos Kosmidis, Master Mariner,Tanker Expertise</strong><br>
+    Cyber Security & Network Integrity Specialist<br>
+    AI Solutions Architect
+</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

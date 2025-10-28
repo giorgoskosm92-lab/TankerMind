@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚓</text></svg>">
+    <style>
+        /* Internal CSS for the About page */
+        .privacy-content {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+        h1 { color: #347cbf; border-bottom: 2px solid #347cbf; padding-bottom: 10px; margin-top: 0;}
+        h3 { color: #5a99c9; margin-top: 30px; }
+        .disclaimer {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border: 1px solid #347cbf;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        ul li { background: #f0f4f9; padding: 10px; margin-bottom: 8px; border-radius: 4px; border-left: 5px solid #ff9900; }
+        .contact-info { margin-top: 30px; padding: 15px; background-color: #f9f9f9; border-radius: 5px; }
+    </style>
+</head>
+<body style="background-color: #f0f4f9;">
+    <div class="chat-app" style="min-height: auto; box-shadow: none; border: none;">
+        <div style="text-align: center; padding: 20px 0; background-color: #c1d6e8; border-bottom: 1px solid #a0c2e0;">
+            <a href="/" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">&larr; Back to Chat</a>
+            <a href="/about" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">About</a>
+            <a href="/contact" style="margin-right: 20px; color: #347cbf; text-decoration: none; font-weight: 600;">Contact Us</a>
+            <a href="/privacy" style="color: #347cbf; text-decoration: none; font-weight: 600;">Privacy</a>
+        </div>
+
+        <div class="contact-box privacy-content">
+            <h1>🔒 Privacy Policy</h1>
+            
+            <p><strong>TankerMind v2.0</strong> is fully committed to user data respect and compliance with the **GDPR** (General Data Protection Regulation).</p>
+
+            <h3 style="color: #347cbf;">1. What Happens to Your Conversations</h3>
+            
+            <ul style="margin-top: 20px;">
+                <li>**Purpose:** We use your messages **solely** to provide the requested advice/consultation.</li>
+                <li>**Storage:** We **DO NOT** store your conversations indefinitely. All messages are automatically deleted from our servers and OpenAI's systems **within 30 days**.</li>
+                <li>**Training:** Your conversations **are never used** to train or improve public AI models.</li>
+            </ul>
+
+            <h3 style="color: #347cbf;">2. Security and Specialization</h3>
+            <p>TankerMind is **private**. Its knowledge comes exclusively from the specialized dataset provided during Fine-Tuning.</p>
+            <p style="font-weight: 600;">Advice:</p>
+            <p>Do not enter sensitive personal data (names, passwords, etc.) in your queries. The AI is designed only for maritime/technical consultation.</p>
+
+            <div class="contact-info">
+                <h3>3. Contact & User Rights (GDPR)</h3>
+                <p>You have the right to request a copy of your data or its erasure.</p>
+                <p>For any request regarding your rights, please contact us directly:</p>
+                <p style="font-size: 1.1em; font-weight: bold;"><a href="mailto:giorgoskosm92@gmail.com">giorgoskosm92@gmail.com</a></p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
