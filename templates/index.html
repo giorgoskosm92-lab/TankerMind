@@ -4,14 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TankerMind v2.0</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.3">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚓</text></svg>">
+    <style>
+        /* Στυλ για το κουμπί upload (Συνδετήρας) */
+        #file-input { display: none; }
+        .upload-btn {
+            padding: 10px 15px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        .upload-btn:hover { background-color: #5a6268; }
+        .file-preview {
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="chat-app">
         <div class="header">
             <div class="logo">⚓</div> 
-            
             <div class="nav-links">
                 <a href="{{ url_for('home') }}">Home</a>
                 <a href="{{ url_for('about') }}">About</a>
@@ -30,49 +50,72 @@
         </div>
         
         <div class="input-area">
+            <label for="file-input" class="upload-btn">📎</label>
+            <input type="file" id="file-input" name="image_file" accept="image/jpeg, image/png">
+            
             <input type="text" id="user-input" placeholder="Πληκτρολογήστε την ερώτησή σας..." onkeydown="if(event.key === 'Enter') sendMessage()">
             <button onclick="sendMessage()">▶</button> 
         </div>
+        <div id="file-preview-container" style="padding: 0 25px 10px 25px; background: white;"></div>
+
     </div>
 
     <script>
-        // JavaScript για την επικοινωνία με το backend (AJAX)
+        // Εμφάνιση preview όταν επιλέγεται αρχείο
+        document.getElementById('file-input').addEventListener('change', function() {
+            var file = this.files[0];
+            var filePreviewContainer = document.getElementById('file-preview-container');
+            if (file) {
+                filePreviewContainer.innerHTML = `<span class="file-preview">Επιλεγμένο αρχείο: ${file.name}</span>`;
+            } else {
+                filePreviewContainer.innerHTML = '';
+            }
+        });
+
+        // Κύρια συνάρτηση αποστολής (ME FORMDATA)
         function sendMessage() {
             var inputField = document.getElementById('user-input');
-            var message = inputField.value;
-            if (message.trim() === "") return;
-
+            var fileInput = document.getElementById('file-input');
             var chatBox = document.getElementById('chat-box');
-            
-            // Εμφάνιση του μηνύματος του χρήστη
-            chatBox.innerHTML += `
-                <div class="user-message-wrapper">
-                    <div class="message-bubble">${message}</div>
-                    <div class="message-icon">👤</div> 
-                </div>
-            `;
+            var filePreviewContainer = document.getElementById('file-preview-container');
+
+            var message = inputField.value;
+            var file = fileInput.files[0];
+
+            if (message.trim() === "" && !file) {
+                alert("Παρακαλώ γράψτε ένα μήνυμα ή ανεβάστε μια εικόνα.");
+                return;
+            }
+
+            // 1. Δημιουργία FormData (Απαραίτητο για αρχεία)
+            var formData = new FormData();
+            formData.append('message', message);
+            if (file) {
+                formData.append('image_file', file);
+            }
+
+            // 2. Εμφάνιση του μηνύματος του χρήστη
+            var userMessageHTML = `<div class="user-message-wrapper"><div class="message-bubble">${message}</div><div class="message-icon">👤</div></div>`;
+            chatBox.innerHTML += userMessageHTML;
             chatBox.scrollTop = chatBox.scrollHeight;
             
-            // Καθαρισμός του input box
+            // 3. Καθαρισμός πεδίων
             inputField.value = '';
+            fileInput.value = ''; 
+            filePreviewContainer.innerHTML = ''; 
 
-            // Εμφάνιση "Γράφει..."
+            // 4. Εμφάνιση "Γράφει..."
             var thinkingDiv = document.createElement('div');
             thinkingDiv.className = 'ai-message-wrapper typing-indicator';
-            thinkingDiv.innerHTML = `
-                <div class="message-icon">...</div>
-                <div class="message-bubble">TankerMind: ... Γράφει ...</div>
-            `;
+            thinkingDiv.innerHTML = `<div class="message-icon">...</div><div class="message-bubble">TankerMind: ... Αναλύοντας ...</div>`;
             chatBox.appendChild(thinkingDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
             
-            // Αποστολή στο backend
-            fetch('/get_response', {
+            // 5. Αποστολή στο backend (ΩΣ FORMDATA, ΟΧΙ JSON)
+            // *** ΔΙΟΡΘΩΣΗ ENDPOINT ***
+            fetch('/api/chat', { 
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 'message': message })
+                body: formData 
             })
             .then(response => response.json())
             .then(data => {
