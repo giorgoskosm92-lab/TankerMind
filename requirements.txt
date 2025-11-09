@@ -3,3 +3,8 @@ openai
 gunicorn
 python-dotenv
 tenacity
+Flask-SQLAlchemy
+psycopg2-binary
+Flask-Bcrypt
+sendgrid
+Pillow
